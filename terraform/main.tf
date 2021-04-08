@@ -3,7 +3,7 @@ resource "google_dns_managed_zone" "managed_zone" {
   dns_name = var.dns_name
 }
 
-resource "google_dns_record_set" "dev_api" {
+resource "google_dns_record_set" "api" {
   managed_zone = google_dns_managed_zone.managed_zone.name
   name         = "api-.${google_dns_managed_zone.managed_zone.dns_name}"
   rrdatas      = [google_compute_global_address.api_fwd_address.address]

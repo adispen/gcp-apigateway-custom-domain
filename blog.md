@@ -128,7 +128,7 @@ resource "google_compute_global_forwarding_rule" "api_fwd_rule" {
 ## DNS Alias Record
 Finally we need our actual custom subdomain.  Make sure you align this with your managed zone naming.
 ```hcl
-resource "google_dns_record_set" "dev_api" {
+resource "google_dns_record_set" "api" {
   managed_zone = google_dns_managed_zone.managed_zone.name
   name         = "api-.${google_dns_managed_zone.managed_zone.dns_name}"
   rrdatas      = [google_compute_global_address.api_fwd_address.address]
